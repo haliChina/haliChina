@@ -27,7 +27,7 @@ Welcome to my GitHub profile! I'm a passionate developer and technology enthusia
 ## 📊 GitHub Stats
 
 ![Hali's GitHub Stats](https://github-stats-extended.vercel.app/api?username=haliChina&show_icons=true&theme=tokyonight)
-![Top Langs](https://github-stats-extended.vercel.app/haliChina&layout=compact&theme=tokyonight)
+![Top Langs](https://github-stats-extended.vercel.app/api/haliChina&layout=compact&theme=tokyonight)
 
 ## 🌐 Connect With Me
 
