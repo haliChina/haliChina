@@ -46,6 +46,15 @@ Current areas of interest include authorized security research, Android and APK 
 
 - **[AboutHali](https://github.com/haliChina/AboutHali)** — WebGL sakura rendering and a multi-state Dynamic Island interface for [userhali.com](https://userhali.com).
 
+## GitHub Stats
+
+<p align="center">
+  <img src="https://github-stats-extended.vercel.app/api?username=haliChina&amp;show_icons=true&amp;theme=tokyonight" alt="Hali's GitHub Stats">
+  <img src="https://github-stats-extended.vercel.app/api/top-langs/?username=haliChina&amp;layout=compact&amp;theme=tokyonight" alt="Hali's Top Languages">
+</p>
+
+> These dynamic cards are rendered by `github-stats-extended.vercel.app`; availability and request handling depend on that external service.
+
 ## How I document projects
 
 A useful README should make four things easy to find:
