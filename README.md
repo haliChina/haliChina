@@ -1,42 +1,84 @@
-# 👋 Hi, I'm UserHali (haliChina)!
+<p align="center">
+  <img src="./assets/readme/hero.svg" width="100%" alt="UserHali — security research and practical software projects">
+</p>
 
-Welcome to my GitHub profile! I'm a passionate developer and technology enthusiast from China, always eager to learn, build, and collaborate on exciting projects.
+<p align="center">
+  <a href="https://userhali.com"><strong>Website</strong></a> ·
+  <a href="https://status.userhali.com">Services</a> ·
+  <a href="mailto:admin@userhali.com">Email</a>
+</p>
 
-**[All My Website](https://status.userhali.com)**
+## About
 
-## 🚀 About Me
+I build security-aware web systems, browser tools, and small utilities. My preferred workflow is straightforward:
 
-- 💻 **Developer:** Experienced in full-stack development, open-source contributions, and creative coding.
-- 🌏 **Location:** China
-- 📚 **Lifelong Learner:** I love exploring new technologies, frameworks, and tools.
-- 🛠️ **Tech Stack:**  
-  ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=333) 
-  ![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=fff) 
-  ![Node.js](https://img.shields.io/badge/-Node.js-339933?logo=node.js&logoColor=fff)
-  ![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=333)
-  ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=fff)
-  ![Docker](https://img.shields.io/badge/-Docker-2496ED?logo=docker&logoColor=fff)
+```text
+understand the mechanism → locate the trust boundary → state the limits
+```
 
-## 🧩 What I Do
+Current areas of interest include authorized security research, Android and APK analysis, authentication flows, browser storage, API design, and local-first software.
 
-- ⭐ Contribute to open source projects and collaborate with the community
-- 📝 Share knowledge through code, documentation, and tutorials
-- 💡 Constantly experiment with new ideas and side projects
-- 🌱 Currently learning: **AI/ML, Cloud Computing, and Advanced Backend Development**
+<p align="center">
+  <img src="./assets/readme/projects.svg" width="100%" alt="Map of UserHali projects across security, local-first tools, web systems, and interactive interfaces">
+</p>
 
-## 📊 GitHub Stats
+## Selected work
 
-![Hali's GitHub Stats](https://github-stats-extended.vercel.app/api?username=haliChina&show_icons=true&theme=tokyonight)
-![Top Langs](https://github-stats-extended.vercel.app/api/top-langs/?username=haliChina&layout=compact&theme=tokyonight)
+### Security & authentication
 
-## 🌐 Connect With Me
+- **[2fa](https://github.com/haliChina/2fa)** — browser-local RFC 6238 TOTP authenticator with an explicit storage and XSS boundary.
+- **[MCC2T](https://github.com/haliChina/MCC2T)** — Microsoft Cookie → Xbox Live → XSTS → Minecraft token exchange through a Serverless API.
+- **[new-api-quota-overflow](https://github.com/haliChina/new-api-quota-overflow)** — security research tooling for authorized quota-boundary assessment.
 
-- [GitHub Discussions](https://github.com/haliChina)
-- Mail: admin@userhali.com 
-- [Blog/Website](https://blog.userhali.com) 
+### Local-first browser tools
 
----
+- **[Image-Obfuscation](https://github.com/haliChina/Image-Obfuscation)** — deterministic, reversible image-pixel permutation; visual obfuscation rather than cryptographic encryption.
+- **[N-M](https://github.com/haliChina/N-M)** — encrypted music-file processing in browser memory, with documented external font/CDN boundaries.
+- **[shiju](https://github.com/haliChina/shiju)** — a local-first writing library for collecting, organizing, retrieving, and revisiting quotations.
 
-> “Code is like humor. When you have to explain it, it’s bad.” – Cory House
+### Web systems
 
-Thanks for visiting! ⭐️
+- **[VibeChat](https://github.com/haliChina/VibeChat)** — one chat client routing directly to local `llama.cpp` or remote OpenAI-compatible endpoints.
+- **[tinylink-nextjs](https://github.com/haliChina/tinylink-nextjs)** — custom short links, redirect notices, PostgreSQL analytics, and a clearly documented unauthenticated management boundary.
+- **[LocalShare](https://github.com/haliChina/LocalShare)** — streamed LAN file sharing from Node.js or a single Windows executable.
+
+### Interfaces
+
+- **[AboutHali](https://github.com/haliChina/AboutHali)** — WebGL sakura rendering and a multi-state Dynamic Island interface for [userhali.com](https://userhali.com).
+
+## How I document projects
+
+A useful README should make four things easy to find:
+
+1. What the project actually does.
+2. The shortest path to a successful first run.
+3. Where credentials, files, and network requests cross boundaries.
+4. What the project does **not** guarantee.
+
+That is why the repositories above include architecture diagrams, deployment notes, and security limitations instead of relying only on feature lists.
+
+## Working principles
+
+- Authorized scope first.
+- Evidence over assumptions.
+- Local-first does not automatically mean offline or secret.
+- A warning page is not a security guarantee.
+- Browser storage is not a credential vault.
+- Client-side rate limits are not server-side abuse protection.
+- Small tools still deserve explicit trust boundaries.
+
+## Stack
+
+```text
+TypeScript / JavaScript / React / Next.js / Node.js
+HTML / CSS / WebGL / PostgreSQL / Vercel
+Python / Android security / APK analysis / reverse engineering
+```
+
+## Contact
+
+- Website: [userhali.com](https://userhali.com)
+- Service status: [status.userhali.com](https://status.userhali.com)
+- Email: [admin@userhali.com](mailto:admin@userhali.com)
+
+> “Code is like humor. When you have to explain it, it’s bad.” — Cory House
