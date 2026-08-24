@@ -2,3 +2,6 @@
 .env
 .env.local
 .env.*
+
+# local preview renders
+assets/readme/preview/
