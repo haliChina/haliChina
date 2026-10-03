@@ -28,6 +28,16 @@ I build security-aware web systems and local-first browser tools. Same sequence 
 ## Stats
 
 <p align="center">
-  <img src="https://github-stats-extended.vercel.app/api?username=haliChina&amp;show_icons=true&amp;theme=tokyonight" alt="Hali's GitHub Stats">
-  <img src="https://github-stats-extended.vercel.app/api/top-langs/?username=haliChina&amp;layout=compact&amp;theme=tokyonight" alt="Hali's Top Languages">
+  <img src="./assets/readme/gh-stats.svg" alt="Hali's GitHub Stats">
+  <img src="./assets/readme/gh-langs.svg" alt="Hali's Top Languages">
 </p>
+
+<!--
+  统计卡是构建期抓取并提交的静态快照，不会自动刷新。
+  原因：原先直连 github-stats-extended.vercel.app，该域名在 *.vercel.app 段内，
+  中国大陆常遭 DNS 污染，境内访客必然看到破图。改为提交到本仓库、走
+  raw.githubusercontent.com（同为境外，但 GitHub 主域未被污染，稳定性更好）。
+
+  刷新方式：在能访问该服务的网络下重新抓取后提交即可 ——
+  node scripts/gen-stats.mjs   （脚本见 haliChina/AboutHali 仓库）
+-->

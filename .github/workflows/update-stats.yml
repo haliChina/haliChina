@@ -1,0 +1,78 @@
+name: Update GitHub stats cards
+
+# profile README 里的两张统计卡同样是「抓取后提交产物」的静态快照。
+# 本 workflow 定期重抓，仅在内容变化时提交。
+#
+# 为什么不用实时图片 URL：原先直连 github-stats-extended.vercel.app，
+# 该域名在 *.vercel.app 段内，中国大陆常遭 DNS 污染，境内访客必然看到破图。
+# 改为把产物提交进仓库、由 GitHub 自身分发（raw/camo），绕开该域名。
+#
+# 注意：产物会变旧（stars/commits 不会实时刷新），本 workflow 负责补上。
+on:
+  schedule:
+    # 每天 03:17 UTC（= 北京时间 11:17）。避开整点，GitHub cron 在 :00
+    # 排队最严重，容易被延迟甚至丢弃。
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# 避免定时与手动触发叠加产生竞态提交。
+concurrency:
+  group: update-stats-cards
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Refresh stats cards
+        # profile 仓的产物落在 assets/readme/
+        run: node scripts/gen-stats.mjs --out=assets/readme
+
+      - name: Validate generated SVGs
+        # 生成脚本失败时 exit 0 并沿用旧产物（刻意不阻断），因此必须
+        # 显式校验，否则一次静默失败会被当作「无变化」无声结束。
+        run: |
+          set -euo pipefail
+          for f in assets/readme/gh-stats.svg assets/readme/gh-langs.svg; do
+            if [ ! -s "$f" ]; then
+              echo "::error::$f 缺失或为空"; exit 1
+            fi
+            head -c 200 "$f" | grep -q '<svg' || { echo "::error::$f 不是 SVG"; exit 1; }
+            tail -c 200 "$f" | grep -q '</svg>' || { echo "::error::$f 缺少结束标签"; exit 1; }
+            echo "OK $f ($(wc -c < "$f")B)"
+          done
+
+      - name: Commit if changed
+        run: |
+          # 逐文件比对，而不是 git diff --quiet：后者看不见「新增/被删除后
+          # 重建」，首次运行会误判为「无变化」而跳过提交。
+          changed=0
+          for f in assets/readme/gh-stats.svg assets/readme/gh-langs.svg; do
+            if git diff --quiet -- "$f" && git ls-files --error-unmatch "$f" >/dev/null 2>&1; then
+              echo "  unchanged: $f"
+            else
+              echo "  changed:   $f"
+              changed=1
+            fi
+          done
+          if [ "$changed" -eq 0 ]; then
+            echo "统计卡无变化，无需提交。"
+            exit 0
+          fi
+          git config user.name  'haliChina'
+          git config user.email '168755253+haliChina@users.noreply.github.com'
+          git add assets/readme/gh-stats.svg assets/readme/gh-langs.svg
+          git commit -m 'chore: refresh GitHub stats cards'
+          git push
